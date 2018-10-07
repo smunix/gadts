@@ -1,0 +1,77 @@
+name: gadts
+version: '0.1.0.0'
+category: Compiler
+author: Providence Salumu
+maintainer: Providence.Salumu@smunix.com
+copyright: BSD
+license: BSD3
+github: smunix/gadts
+extra-source-files:
+- README.md
+library:
+  source-dirs: src
+  ghc-options:
+    - -Wno-partial-type-signatures
+  default-extensions:
+    - BangPatterns
+    - CPP
+    - DataKinds
+    - DeriveGeneric
+    - FlexibleContexts
+    - FlexibleInstances
+    - FunctionalDependencies
+    - GADTs
+    - GeneralizedNewtypeDeriving
+    - InstanceSigs
+    - KindSignatures
+    - MultiParamTypeClasses
+    - PartialTypeSignatures
+    - PolyKinds
+    - RankNTypes
+    - ScopedTypeVariables
+    - StandaloneDeriving
+  exposed-modules:
+  - Data.String.Strip
+  - Data.GADT.Vector
+  - Data.GADT.Vec
+  - Data.GADT.Singleton
+  dependencies:
+  - base
+  - cereal
+executables:
+  gadts:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - base
+    - gadts
+tests:
+  gadts-test:
+    default-extensions:
+      - CPP
+      - DataKinds
+      - FlexibleInstances
+      - FlexibleContexts
+      - FunctionalDependencies
+      - GADTs
+      - KindSignatures
+      - MultiParamTypeClasses
+      - PolyKinds
+      - ScopedTypeVariables
+      - StandaloneDeriving
+      - TypeFamilies
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - base
+    - gadts
+    - hspec
+    - QuickCheck
