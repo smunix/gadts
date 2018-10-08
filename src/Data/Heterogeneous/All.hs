@@ -15,6 +15,9 @@ type family (c :: k -> Constraint) |=> (xs :: [k]) :: Constraint where
 class (c (f x)) => ((c :: * -> Constraint) ^=> (f :: k -> *)) (x :: k)
 instance (c (f x)) => (c ^=> f) x
 
-class ((c ^=> f) |=> xs) => All c f xs
-instance ((c ^=> f) |=> xs) => All c f xs
+infix 5 ^=>
+infix 4 |=>
+
+class (c ^=> f |=> xs) => All c f xs
+instance (c ^=> f |=> xs) => All c f xs
 

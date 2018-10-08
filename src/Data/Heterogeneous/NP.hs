@@ -20,21 +20,9 @@ data NP (f :: k -> *) (xs :: [k]) where
   (:->) :: f x -> NP f xs -> NP f (x ': xs)
 infixr 5 :->
 
-#if 0
-instance Show (NP f '[]) where
-  show _ = "O"
-deriving instance (Show (f x), Show (NP f xs)) => Show (NP f (x ': xs))
-
-instance Eq (NP f '[]) where
-  (==) _ _ = True
-deriving instance (Eq (f x), Eq (NP f xs)) => Eq (NP f (x ': xs))
-
-#else
--- deriving instance ((Show ^=> f) |=> xs) => Show (NP f xs)
--- deriving instance ((Eq ^=> f) |=> xs) => Eq (NP f xs)
-deriving instance (All Show f xs) => Show (NP f xs)
-deriving instance (All Eq f xs) => Eq (NP f xs)
-#endif
+deriving instance (Show ^=> f |=> xs) => Show (NP f xs)
+deriving instance (Eq ^=> f |=> xs) => Eq (NP f xs)
+deriving instance (Eq ^=> f |=> xs, Ord ^=> f |=> xs) => Ord (NP f xs)
 
 data I a where
   I :: a -> I a
