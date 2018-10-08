@@ -14,6 +14,7 @@ library:
     - -Wno-partial-type-signatures
   default-extensions:
     - BangPatterns
+    - ConstraintKinds
     - CPP
     - DataKinds
     - DeriveGeneric
@@ -30,13 +31,21 @@ library:
     - RankNTypes
     - ScopedTypeVariables
     - StandaloneDeriving
+    - TypeOperators
+    - TypeFamilies
+    # - TypeInType
+    - UndecidableInstances
+    - UndecidableSuperClasses
   exposed-modules:
   - Data.String.Strip
   - Data.GADT.Vector
   - Data.GADT.Vec
   - Data.GADT.Singleton
+  - Data.Heterogeneous.List
+  - Data.Heterogeneous.NP
   dependencies:
   - base
+  # - ghc-prim
   - cereal
 executables:
   gadts:
@@ -64,6 +73,7 @@ tests:
       - ScopedTypeVariables
       - StandaloneDeriving
       - TypeFamilies
+      - TypeOperators
     main: Spec.hs
     source-dirs: test
     ghc-options:

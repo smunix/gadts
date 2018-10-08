@@ -2,7 +2,7 @@
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: 4f77c36eae0d4dc8f644be5e79eaa2956bae1cd305055a632d11987b3962f64c
+-- hash: 6e3f79889bade2886fde7f6347252780a605aca86bbd0da8e7daa246e718985a
 
 name:           gadts
 version:        0.1.0.0
@@ -29,13 +29,14 @@ library
       Data.GADT.Vector
       Data.GADT.Vec
       Data.GADT.Singleton
-  other-modules:
       Data.Heterogeneous.List
       Data.Heterogeneous.NP
+  other-modules:
+      Data.Heterogeneous.All
       Paths_gadts
   hs-source-dirs:
       src
-  default-extensions: BangPatterns CPP DataKinds DeriveGeneric FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures MultiParamTypeClasses PartialTypeSignatures PolyKinds RankNTypes ScopedTypeVariables StandaloneDeriving
+  default-extensions: BangPatterns ConstraintKinds CPP DataKinds DeriveGeneric FlexibleContexts FlexibleInstances FunctionalDependencies GADTs GeneralizedNewtypeDeriving InstanceSigs KindSignatures MultiParamTypeClasses PartialTypeSignatures PolyKinds RankNTypes ScopedTypeVariables StandaloneDeriving TypeOperators TypeFamilies UndecidableInstances UndecidableSuperClasses
   ghc-options: -Wno-partial-type-signatures
   build-depends:
       base
@@ -66,7 +67,7 @@ test-suite gadts-test
       Paths_gadts
   hs-source-dirs:
       test
-  default-extensions: CPP DataKinds FlexibleInstances FlexibleContexts FunctionalDependencies GADTs KindSignatures MultiParamTypeClasses PolyKinds ScopedTypeVariables StandaloneDeriving TypeFamilies
+  default-extensions: CPP DataKinds FlexibleInstances FlexibleContexts FunctionalDependencies GADTs KindSignatures MultiParamTypeClasses PolyKinds ScopedTypeVariables StandaloneDeriving TypeFamilies TypeOperators
   ghc-options: -threaded -rtsopts -with-rtsopts=-N
   build-depends:
       QuickCheck
